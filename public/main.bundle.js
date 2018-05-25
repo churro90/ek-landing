@@ -109,7 +109,7 @@ var AppComponent = /** @class */ (function () {
             };
             var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]();
             headers.append('Content-Type', 'application/json');
-            this.http.post('http://localhost:3000/nuevo-proveedor', nuevoProveedor, { headers: headers })
+            this.http.post('http://localhost:8080/nuevo-proveedor', nuevoProveedor, { headers: headers })
                 .subscribe(function (data) {
             });
         }
@@ -123,7 +123,7 @@ var AppComponent = /** @class */ (function () {
             };
             var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]();
             headers.append('Content-Type', 'application/json');
-            this.http.post('http://localhost:3000/nuevo-usuario', nuevoUsuario, { headers: headers })
+            this.http.post('http://localhost:8080/nuevo-usuario', nuevoUsuario, { headers: headers })
                 .subscribe(function (data) {
                 if (data.success) {
                     _this.exito = true;

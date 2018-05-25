@@ -6,9 +6,15 @@ const express      = require('express'),
     nodemailer     = require('nodemailer'),
     Usuario        = require('./models/usuario'),
     Proveedor      = require('./models/proveedor'),
+    MongoClient    = require('mongodb').MongoClient;
     config         = require('./config/database');
 
-    mongoose.connect(config.database);
+     mongoose.connect(config.database);
+ /*    MongoClient.connect(config.database, function(err, db) {
+        console.log("connected to " + db)
+        db.close();
+     });
+       */
 
     // On connection
 mongoose.connection.on('connected', () => {
@@ -22,9 +28,9 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
-const port = 3000;
+const port = 8080;
 
-app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Body Parser Middleware
