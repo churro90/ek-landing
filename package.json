@@ -4,6 +4,8 @@
   "description": "Landing Pre Lanzamiento",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "deploy": "gcloud app deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Martin Carrasco",
