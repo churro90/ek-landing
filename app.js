@@ -22,7 +22,7 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
-const port = 8080;
+const port = 3000;
 
 app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 app.use(express.static(path.join(__dirname, 'public')));
