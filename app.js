@@ -44,7 +44,7 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
-const port = 8080;
+const PORT = process.env.PORT || 5000
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -270,6 +270,6 @@ app.post('/nuevo-proveedor', (req, res, next) =>{
     });
  });
  //Start Server
- app.listen(port, () => {
-     console.log('Server started on port ' +port);
+ app.listen(PORT, () => {
+     console.log('Server started on port ' +PORT);
  });
