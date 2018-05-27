@@ -1,0 +1,7 @@
+{
+  "mongoHost": "ds133550.mlab.com",
+  "mongoPort": "33550",
+  "mongoDatabase": "ek-registro-inicial",
+  "mongoUser": "admin",
+  "mongoPass": "17856904k"
+}

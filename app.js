@@ -1,3 +1,5 @@
+'use strict';
+
 const express      = require('express'),
     path           = require('path'),
     bodyParser     = require('body-parser'),
@@ -6,19 +8,33 @@ const express      = require('express'),
     nodemailer     = require('nodemailer'),
     Usuario        = require('./models/usuario'),
     Proveedor      = require('./models/proveedor'),
-    MongoClient    = require('mongodb').MongoClient;
+    mongodb        = require('mongodb'),
+    nconf          = require('nconf'),
     config         = require('./config/database');
 
-     mongoose.connect(config.database);
  /*    MongoClient.connect(config.database, function(err, db) {
         console.log("connected to " + db)
         db.close();
      });
        */
+nconf.argv().env().file('keys.json');
+const user = nconf.get('mongoUser');
+const pass = nconf.get('mongoPass');
+const host = nconf.get('mongoHost');
+const mport = nconf.get('mongoPort');
 
+let uri = `mongodb://${user}:${pass}@${host}:${mport}`;
+if (nconf.get('mongoDatabase')) {
+  uri = `${uri}/${nconf.get('mongoDatabase')}`;
+}
+console.log(uri);
     // On connection
+
+    mongoose.connect(uri);
+
+
 mongoose.connection.on('connected', () => {
-    console.log('Connected to database: '+config.database);
+    console.log('Connected to database: '+uri);
 });
 // On error
 mongoose.connection.on('error', (err) => {
